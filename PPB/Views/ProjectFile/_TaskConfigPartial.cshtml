@@ -1,0 +1,71 @@
+﻿@using PPB.DBManager.Models
+@model List<TaskConfigurationModel>
+
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Edit Task Configuration</h3>
+        </div>
+
+        @if (Model == null || Model.Count() == 0)
+        {
+            <div class="box-body">
+                <label class="col-sm-2 control-label">Task Name:</label>
+                <label class="col-sm-10 control-label plc-config">XXXXXXX</label>
+            </div>
+        }
+        else
+        {
+            foreach (var m in Model)
+            {
+                if (m.DisplayName.Equals("SPACE"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-12 control-label"></label>
+                    </div>
+                }
+                else if (m.MemberType.Equals("BOOL"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label">@m.DisplayName</label>
+                        @if (m.MemberValue.Equals("True"))
+                        {
+                            <input type="checkbox" class="col-sm-0 checkbox task-config" data-configid="@m.Id" data-type="@m.MemberType" data-name="@m.MemberName" data-basetag="@m.BaseTag" checked="checked" />
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="col-sm-0 checkbox task-config" data-configid="@m.Id" data-type="@m.MemberType" data-name="@m.MemberName" data-basetag="@m.BaseTag" />
+                        }
+                    </div>
+                }
+                else if (m.IsBoolArray)
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label">@m.DisplayName</label>
+                        <a href="javascript:void(0)" class="btn btn-default task-config-bool-array" data-name="@m.MemberName" data-type="@m.MemberType" data-displayname="@m.DisplayName"><i class="fa fa-edit"></i> Edit</a>
+                    </div>
+                }
+                else if (m.IsIntArray && !m.IsBoolArray)
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label">@m.DisplayName</label>
+                        <a href="javascript:void(0)" class="btn btn-default task-config-int-array" data-name="@m.MemberName" data-type="@m.MemberType" data-displayname="@m.DisplayName"><i class="fa fa-edit"></i> Edit</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label">@m.DisplayName</label>
+                        <input type="text" class="col-sm-10 form-control task-config" data-configid="@m.Id" data-type="@m.MemberType" data-name="@m.MemberName" data-basetag="@m.BaseTag" value="@m.MemberValue" />
+                    </div>
+                }
+            }
+        }
+
+
+        <div class="box-footer">
+            <button type="button" class="btn btn-primary pull-right template-btn task-save-btn"> Save</button>
+            <button type="button" class="btn btn-primary pull-right template-btn task-cancel-btn"> Cancel</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "PlcMgmt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>PLC Information</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-cog"></i>Master File Management</a></li>
+        <li class="active">PLC Information</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-list"></i><h3 class="box-title">PLC Information</h3>
+                </div>
+                <div class="box-body admin-content">
+                    This part is for PLC Information
+                </div>
+                <div class="box-footer ac-add-btn-box">
+                    <a href="javascript:void(0)" class="btn btn-primary pull-right plc-information-add-btn"><i class="fa fa-plus"></i> Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row addPlcInformationDiv">
+
+    </div>
+</section>
+
+<script src="~/Scripts/masterfile/plcmgmt.js"></script>
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+        });
+
+    </script>
+}
+
+

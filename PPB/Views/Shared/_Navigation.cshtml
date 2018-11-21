@@ -1,0 +1,127 @@
+﻿@using PPB.DBManager.Models
+@using PPB.Constant.Enums
+@{
+    LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+    string displayName = loginUser != null ? loginUser.UserName : "Guster";
+
+    string currentPageUrl = Request.Url.AbsoluteUri;
+    string accountSettingTreeClass = (currentPageUrl.Contains("PersonalInformation") || currentPageUrl.Contains("ChangePassword")) ? "active" : "";
+    string projectFileMgmtTreeClass = currentPageUrl.Contains("ProjectFile") ? "active" : "";
+    string masterFileMgmtTreeClass = currentPageUrl.Contains("MasterFile") ? "active" : "";
+}
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/images/Lighter.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>@displayName</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> online</a>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            @if (loginUser != null)
+            {
+                if (loginUser.RoleType == UserLevelType.Administrator)
+                {
+                    <li class="@accountSettingTreeClass treeview">
+                        <a href="/AccountSetting/PersonalInformation">
+                            <i class="fa fa-user"></i><span>Account Setting</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (currentPageUrl.Contains("PersonalInformation"))
+                            {
+                                <li class="active"><a href="/AccountSetting/PersonalInformation"><i class="fa fa-circle-o"></i> Personal Information</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/AccountSetting/PersonalInformation"><i class="fa fa-circle-o"></i> Personal Information</a></li>
+                            }
+                            @if (currentPageUrl.Contains("ChangePassword"))
+                            {
+                                <li class="active"><a href="/AccountSetting/ChangePassword"><i class="fa fa-circle-o"></i> Change Password</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/AccountSetting/ChangePassword"><i class="fa fa-circle-o"></i> Change Password</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="@masterFileMgmtTreeClass treeview">
+                        <a href="/MasterFile/PlcMgmt">
+                            <i class="fa fa-cog"></i><span>Master File Management</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (currentPageUrl.Contains("PlcMgmt"))
+                            {
+                                <li class="active"><a href="/MasterFile/PlcMgmt"><i class="fa fa-circle-o"></i> PLC Information</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/MasterFile/PlcMgmt"><i class="fa fa-circle-o"></i> PLC Information</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="@projectFileMgmtTreeClass treeview">
+                        <a href="/ProjectFile/ProjectMgmt">
+                            <i class="fa fa-cogs"></i><span>Project File Management</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            @if (currentPageUrl.Contains("Areas") || currentPageUrl.Contains("AreaConfig"))
+                            {
+                                <li class="active"><a href="/ProjectFile/AreaConfig"><i class="fa fa-circle-o"></i> Area Configuration</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/ProjectFile/AreaConfig"><i class="fa fa-circle-o"></i> Area Configuration</a></li>
+                            }
+                            @if (currentPageUrl.Contains("PlcConfig"))
+                            {
+                                <li class="active"><a href="/ProjectFile/PlcConfig"><i class="fa fa-circle-o"></i> PLC Configuration</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/ProjectFile/PlcConfig"><i class="fa fa-circle-o"></i> PLC Configuration</a></li>
+                            }
+                            @if (currentPageUrl.Contains("StationConfig"))
+                            {
+                                <li class="active"><a href="/ProjectFile/StationConfig"><i class="fa fa-circle-o"></i> Station Configuration</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/ProjectFile/StationConfig"><i class="fa fa-circle-o"></i> Station Configuration</a></li>
+                            }
+                            @if (currentPageUrl.Contains("TaskConfig"))
+                            {
+                                <li class="active"><a href="/ProjectFile/TaskConfig"><i class="fa fa-circle-o"></i> Task Configuration</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/ProjectFile/TaskConfig"><i class="fa fa-circle-o"></i> Task Configuration</a></li>
+                            }
+                            @if (currentPageUrl.Contains("ModelConfig"))
+                            {
+                                <li class="active"><a href="/ProjectFile/ModelConfig"><i class="fa fa-circle-o"></i> Model Configuration</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/ProjectFile/ModelConfig"><i class="fa fa-circle-o"></i> Model Configuration</a></li>
+                            }
+                            @if (currentPageUrl.Contains("PfMgmt"))
+                            {
+                                <li class="active"><a href="/ProjectFile/PfMgmt"><i class="fa fa-circle-o"></i> PF Mgmt</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/ProjectFile/PfMgmt"><i class="fa fa-circle-o"></i> PF Mgmt</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            }
+        </ul>
+    </section>
+</aside>

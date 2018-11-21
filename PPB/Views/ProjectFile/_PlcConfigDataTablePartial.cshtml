@@ -1,0 +1,33 @@
+﻿@using PPB.DBManager.Models
+@model List<PlcHierarchy>
+<table id="PlcConfigDataTbl" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Area</th>
+            <th>Section</th>
+            <th>Station</th>
+            <th>PLC</th>
+            <th>Address</th>
+            <th>Slot</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var plc in Model)
+        {
+            <tr data-area="@plc.AreaName" data-section="@plc.SectionName" data-station="@plc.StationName" data-plc="@plc.PlcName">
+                <td>@plc.AreaName</td>
+                <td>@plc.SectionName</td>
+                <td>@plc.StationName</td>
+                <td>@plc.PlcName</td>
+                <td>@plc.AddressConfig.IpAddress</td>
+                <td>@plc.AddressConfig.Slot</td>
+                <td>
+                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-xs btn-default editAction"><i class="fa fa-edit"></i> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

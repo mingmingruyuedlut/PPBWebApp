@@ -1,0 +1,33 @@
+﻿@using PPB.DBManager.Models
+@model List<TaskModel>
+<table id="TaskInstancesDataTbl" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="hidden-xs hidden-sm">Area</th>
+            <th class="hidden-xs hidden-sm">Section</th>
+            <th>Station</th>
+            <th class="hidden-xs">Master File</th>
+            <th>Task Name</th>
+            <th>Instance</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr data-id="@m.Id" data-instance="@m.TaskInstance" data-area="@m.AreaName" data-section="@m.SectionName" data-station="@m.StationName" data-task="@m.TaskName" data-affiliation="@m.ModelAffiliation">
+                <td><input type="checkbox" class="col-sm-0" /></td>
+                <td class="hidden-xs hidden-sm">@m.AreaName</td>
+                <td class="hidden-xs hidden-sm">@m.SectionName</td>
+                <td>@m.StationName</td>
+                <td class="hidden-xs">@m.MasterFileName</td>
+                <td>@m.TaskName</td>
+                <td>@m.TaskInstanceDisplay</td>
+                <td>
+                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-xs btn-default editAction"><i class="fa fa-edit"></i> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

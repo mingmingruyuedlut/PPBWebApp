@@ -1,0 +1,29 @@
+﻿@using PPB.DBManager.Models
+@model List<AreaConfigurationModel>
+<table id="AreaConfigDataTbl" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Area</th>
+            <th>Model Number</th>
+            <th>Model Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr data-id="@m.Id" data-area="@m.AreaName" data-mnumber="@m.ModelNumber" data-mname="@m.ModelName" data-display-name="@m.DisplayName">
+                <td>@m.AreaName</td>
+                <td>@m.ModelNumber</td>
+                <td>@m.ModelName</td>
+                <td>
+                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-xs btn-default editAction"><i class="fa fa-edit"></i> </a>
+                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Delete" class="btn btn-xs btn-default deleteAction"><i class="fa fa-remove"></i> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

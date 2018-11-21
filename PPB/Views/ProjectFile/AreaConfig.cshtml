@@ -1,0 +1,73 @@
+﻿
+@using PPB.DBManager.Models
+@model AreaSummary
+
+@{
+    ViewBag.Title = "Area Configuraton";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Area Configuration
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-cogs"></i>Project File Management</a></li>
+        <li class="active">Area Configuration</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-list"></i><h3 class="box-title">Area Configuration</h3>
+                </div>
+                <div class="box-body admin-content">
+                    @Html.Partial("_AreasDataTablePartial", Model.AreaModelList)
+                </div>
+                <div class="box-footer ac-add-btn-box">
+                    <a href="javascript:void(0)" class="btn btn-primary pull-right ac-add-btn"><i class="fa fa-plus"></i> Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row addAreaConfigDiv">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Add Area Configuration</h3>
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 control-label redAsteriskBefore">Model ID:</label>
+                    <label class="col-sm-1 control-label ac-model-number"></label>
+                </div>
+                <div class="box-body">
+                    @*<label class="col-sm-1 control-label redAsteriskBefore ac-model-display">Name</label>*@
+                    <label class="col-sm-1 control-label redAsteriskBefore">Model Name</label>
+                    <input type="text" class="col-sm-11 form-control ac-model-name" />
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-primary pull-right template-btn ac-save-btn"> Save</button>
+                    <button type="button" class="btn btn-primary pull-right template-btn ac-cancel-btn"> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/projectfile/areaconfig.js"></script>
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            initCommonDataTable('#AreasDataTbl');
+            bindAreasEvent();
+            bindAreaConfigEvent();
+        });
+
+    </script>
+}
+
+
+

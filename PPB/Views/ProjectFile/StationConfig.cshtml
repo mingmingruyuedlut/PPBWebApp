@@ -1,0 +1,55 @@
+﻿@using PPB.DBManager.Models
+@model StationSummary
+
+@{
+    ViewBag.Title = "Station Configuration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>Station Configuration</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-cogs"></i>Project File Management</a></li>
+        <li class="active">Station Configuration</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-list"></i><h3 class="box-title">Station Configuration</h3>
+                </div>
+                <div class="box-body admin-content">
+                    @Html.Partial("_StationConfigDataTablePartial", Model.StationList)
+                </div>
+                <div class="box-footer">
+                    <a href="javascript:void(0)" class="btn btn-primary pull-right template-btn station-download-btn"><i class="fa fa-download"></i> Download</a>
+                    <a href="javascript:void(0)" class="btn btn-primary pull-right template-btn station-upload-btn"><i class="fa fa-upload"></i> Upload</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row editStationConfigDiv">
+        
+    </div>
+</section>
+
+<div class="modal fade array-property-edit-popup" aria-hidden="true">
+    @*it's for array type property edit partial*@
+</div>
+
+<script src="~/Scripts/projectfile/stationconfig.js"></script>
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            initCommonDataTable('#StationConfigDataTbl');
+            bindStationConfigEvent();
+        });
+
+    </script>
+}
+
+

@@ -1,0 +1,87 @@
+﻿
+@using PPB.DBManager.Models
+@model List<PlcConfigurationModel>
+
+<div class="col-xs-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Edit PLC Configuration</h3>
+        </div>
+
+        @if (Model == null || Model.Count() == 0)
+        {
+            <div class="box-body">
+                <label class="col-sm-2 control-label">PLC Type:</label>
+                <label class="col-sm-10 control-label plc-config">XXXXXXX</label>
+            </div>
+        }
+        else
+        {
+            foreach (var plc in Model)
+            {
+                if (plc.MemberName.Contains("Actual"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label">PLC Type:</label>
+                        <label class="col-sm-10 control-label plc-type" data-configid="@plc.Id" data-name="@plc.MemberName">@plc.MemberValue</label>
+                    </div>
+                }
+                else if (plc.MemberName.Contains("1"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label redAsteriskBefore">IP Address Oct[1]</label>
+                        <input type="text" class="col-sm-10 form-control plc-config address-first" data-configid="@plc.Id" data-name="@plc.MemberName" value="@plc.MemberValue" />
+                    </div>
+                }
+                else if (plc.MemberName.Contains("2"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label redAsteriskBefore">IP Address Oct[2]</label>
+                        <input type="text" class="col-sm-10 form-control plc-config address-second" data-configid="@plc.Id" data-name="@plc.MemberName" value="@plc.MemberValue" />
+                    </div>
+                }
+                else if (plc.MemberName.Contains("3"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label redAsteriskBefore">IP Address Oct[3]</label>
+                        <input type="text" class="col-sm-10 form-control plc-config address-third" data-configid="@plc.Id" data-name="@plc.MemberName" value="@plc.MemberValue" />
+                    </div>
+                }
+                else if (plc.MemberName.Contains("4"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label redAsteriskBefore">IP Address Oct[4]</label>
+                        <input type="text" class="col-sm-10 form-control plc-config address-fourth" data-configid="@plc.Id" data-name="@plc.MemberName" value="@plc.MemberValue" />
+                    </div>
+                }
+                else if (plc.MemberName.Contains("Slot"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label redAsteriskBefore">PLC Slot</label>
+                        <input type="text" class="col-sm-10 form-control plc-config address-slot" data-configid="@plc.Id" data-name="@plc.MemberName" value="@plc.MemberValue" />
+                    </div>
+                }
+                else if (plc.MemberName.Contains("Download"))
+                {
+                    <div class="box-body">
+                        <label class="col-sm-2 control-label redAsteriskBefore">Disable Download</label>
+                        @if (plc.MemberValue.Equals("True"))
+                        {
+                            <input type="checkbox" class="col-sm-0 checkbox plc-config address-disable-download " data-configid="@plc.Id" data-name="@plc.MemberName" checked="checked" />
+                        }
+                        else
+                        {
+                            <input type="checkbox" class="col-sm-0 checkbox plc-config address-disable-download " data-configid="@plc.Id"  data-name="@plc.MemberName"/>
+                        }
+                    </div>
+                }
+            }
+        }
+
+        
+        <div class="box-footer">
+            <button type="button" class="btn btn-primary pull-right template-btn plc-save-btn"> Save</button>
+            <button type="button" class="btn btn-primary pull-right template-btn plc-cancel-btn"> Cancel</button>
+        </div>
+    </div>
+</div>

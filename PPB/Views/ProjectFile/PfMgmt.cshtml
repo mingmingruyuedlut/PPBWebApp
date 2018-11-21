@@ -1,0 +1,151 @@
+﻿@using PPB.DBManager.Models
+@model TreeView
+
+@{
+    ViewBag.Title = "PfMgmt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>PF Mgmt</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-cogs"></i>Project File Management</a></li>
+        <li class="active">PF Mgmt</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Project File Tree View</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <ul data-widget="tree">
+                        <li class="treeview">
+                            @foreach (var rootNode in Model.Nodes)
+                            {
+                                <a href="#">@rootNode.Label</a>
+                                <ul class="treeview-menu">
+                                    @foreach (var areaNode in rootNode.Nodes)
+                                    {
+                                        if (areaNode.Nodes == null || areaNode.Nodes.Count <= 0)
+                                        {
+                                            <li><a href="#">@areaNode.Label</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li class="treeview">
+                                                <a href="#">@areaNode.Label</a>
+                                                <ul class="treeview-menu">
+                                                    @foreach (var sectionNode in areaNode.Nodes)
+                                                    {
+                                                        if (sectionNode.Nodes == null || sectionNode.Nodes.Count <= 0)
+                                                        {
+                                                            <li><a href="#">@sectionNode.Label</a></li>
+                                                        }
+                                                        else
+                                                        {
+                                                            <li class="treeview">
+                                                                <a href="#">@sectionNode.Label</a>
+                                                                <ul class="treeview-menu">
+                                                                    @foreach (var stationNode in sectionNode.Nodes)
+                                                                    {
+                                                                        if (stationNode.Nodes == null || stationNode.Nodes.Count <= 0)
+                                                                        {
+                                                                            <li><a href="#">@stationNode.Label</a></li>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <li class="treeview">
+                                                                                <a href="#">@stationNode.Label</a>
+                                                                                <ul class="treeview-menu">
+                                                                                    @foreach (var plcNode in stationNode.Nodes)
+                                                                                    {
+                                                                                        if (plcNode.Nodes == null || plcNode.Nodes.Count <= 0)
+                                                                                        {
+                                                                                            <li><a href="#">@plcNode.Label</a></li>
+                                                                                        }
+                                                                                    }
+                                                                                </ul>
+                                                                            </li>
+                                                                        }
+                                                                    }
+                                                                </ul>
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col (left) -->
+        <div class="col-md-6">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Project File Configuration</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <ul data-widget="tree">
+                        <li><a href="#">One Level</a></li>
+                        <li class="treeview">
+                            <a href="#">Multilevel</a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Level 12</a></li>
+                                <li><a href="#">Level 13</a></li>
+                                <li class="treeview">
+                                    <a href="#">Multilevel2</a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="#">Level 22</a></li>
+                                        <li><a href="#">Level 23</a></li>
+                                        <li class="treeview">
+                                            <a href="#">Multilevel3</a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="#">Level 31</a></li>
+                                                <li><a href="#">Level 32</a></li>
+                                                <li class="treeview">
+
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col (right) -->
+    </div>
+</section>
+
+<script src="~/Scripts/projectfile/stationconfig.js"></script>
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('ul').tree();
+        });
+
+    </script>
+}
+
+
+
+
+
+

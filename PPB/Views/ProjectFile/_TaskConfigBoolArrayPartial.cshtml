@@ -1,0 +1,46 @@
+﻿@using PPB.DBManager.Models
+@model List<TaskConfigurationModel>
+
+@{
+    var arrayPropertyName = (Model == null || Model.Count() == 0) ? "Name" : Model.First().DisplayName.Substring(0, Model.First().DisplayName.Length - 3);
+}
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content array-property-edit-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4>Property Name: <span class="property-name" style="margin-left:10px;">@arrayPropertyName</span></h4>
+        </div>
+
+        @if (Model == null || Model.Count() == 0)
+        {
+            <div class="box-body">
+                <label class="col-sm-2 control-label">NO DATA:</label>
+                <label class="col-sm-10 control-label bool-array-task-config">XXXXXXX</label>
+            </div>
+        }
+        else
+        {
+            foreach (var m in Model)
+            {
+                <div class="box-body">
+                    <label class="col-sm-5 control-label">@m.DisplayName</label>
+                    @if (m.MemberValue.Equals("1"))
+                    {
+                        <input type="checkbox" class="col-sm-0 checkbox bool-array-task-config" data-configid="@m.Id" data-type="@m.MemberType" data-name="@m.MemberName" data-basetag="@m.BaseTag" checked="checked" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="col-sm-0 checkbox bool-array-task-config" data-configid="@m.Id" data-type="@m.MemberType" data-name="@m.MemberName" data-basetag="@m.BaseTag" />
+                    }
+                </div>
+            }
+        }
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary pull-right template-btn bool-array-property-save-btn"> Save</button>
+            <button type="button" class="btn btn-primary pull-right template-btn" data-dismiss="modal"> Cancel</button>
+        </div>
+    </div>
+</div>
+

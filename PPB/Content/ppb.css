@@ -1,0 +1,31 @@
+﻿.float-left {
+    float:left
+}
+
+label.redAsteriskAfter:after  {
+  content: '*';
+  color: red;
+}
+
+label.redAsteriskBefore:before  {
+  content: '*';
+  color: red;
+  margin-right:5px;
+}
+
+.btn-logout {
+    margin: 8px;
+}
+
+.template-btn {
+    margin-right: 5px;
+}
+
+.ac-add-btn-box {
+    display: none;
+}
+
+.addAreaConfigDiv {
+    display: none;
+}
+

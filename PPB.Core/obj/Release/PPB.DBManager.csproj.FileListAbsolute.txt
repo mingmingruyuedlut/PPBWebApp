@@ -1,0 +1,15 @@
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.DBManager.dll
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.DBManager.pdb
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.Common.dll
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.Constant.dll
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.Common.pdb
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.Constant.pdb
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\obj\Release\PPB.DBManager.csprojResolveAssemblyReference.cache
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\obj\Release\PPB.DBManager.dll
+C:\Users\ssun12\Documents\visual studio 2015\Projects\PPB\PPB.Core\obj\Release\PPB.DBManager.pdb
+C:\Users\ssun12\Documents\Visual Studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.PythonService.dll
+C:\Users\ssun12\Documents\Visual Studio 2015\Projects\PPB\PPB.Core\bin\Release\IronPython.dll
+C:\Users\ssun12\Documents\Visual Studio 2015\Projects\PPB\PPB.Core\bin\Release\Microsoft.Scripting.dll
+C:\Users\ssun12\Documents\Visual Studio 2015\Projects\PPB\PPB.Core\bin\Release\IronPython.Modules.dll
+C:\Users\ssun12\Documents\Visual Studio 2015\Projects\PPB\PPB.Core\bin\Release\Microsoft.Dynamic.dll
+C:\Users\ssun12\Documents\Visual Studio 2015\Projects\PPB\PPB.Core\bin\Release\PPB.PythonService.pdb

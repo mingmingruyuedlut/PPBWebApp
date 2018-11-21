@@ -1,0 +1,50 @@
+﻿@using PPB.DBManager.Models
+@model List<TaskModel>
+<table id="TasksDataTbl" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="hidden-xs hidden-sm">Area</th>
+            <th class="hidden-xs hidden-sm">Section</th>
+            <th>Station</th>
+            <th class="hidden-xs">Master File</th>
+            <th>Task Name</th>
+            <th class="hidden-xs hidden-sm">Task Memory</th>
+            <th class="hidden-xs hidden-sm hidden-md">Task Memory Plus</th>
+            <th class="hidden-xs hidden-sm hidden-md">Task Nodes</th>
+            <th class="hidden-xs hidden-sm hidden-md">Task Connection</th>
+            <th class="hidden-xs">Instances</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr data-id="@m.Id" data-instance="-1" data-area="@m.AreaName" data-section="@m.SectionName" data-station="@m.StationName" data-task="@m.TaskName">
+                <td><input type="checkbox" class="col-sm-0" /></td>
+                <td class="hidden-xs hidden-sm">@m.AreaName</td>
+                <td class="hidden-xs hidden-sm">@m.SectionName</td>
+                <td>@m.StationName</td>
+                <td class="hidden-xs">@m.MasterFileName</td>
+                <td>@m.TaskName</td>
+                <td class="hidden-xs hidden-sm">@m.TaskMemory</td>
+                <td class="hidden-xs hidden-sm hidden-md">@m.TaskMemoryPlus</td>
+                <td class="hidden-xs hidden-sm hidden-md">@m.TaskNodes</td>
+                <td class="hidden-xs hidden-sm hidden-md">@m.TaskConnection</td>
+                <td class="hidden-xs">@m.MaxNoOfInstances</td>
+                @if (@m.MaxNoOfInstances > 1)
+                {
+                    <td>
+                        <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="View" class="btn btn-xs btn-default viewAction"><i class="fa fa-eye"></i> </a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="Edit" class="btn btn-xs btn-default editAction"><i class="fa fa-edit"></i> </a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
